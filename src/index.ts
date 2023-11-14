@@ -7,6 +7,6 @@ console.log(emojis[Math.round(Math.random() * emojis.length)]);
 
 const wordUser: string | null = prompt('введите слово');
 
-for(let i:number = 0; i < wordUser.length; i++){
+// for(let i:number = 0; i < wordUser.length; i++){
 
-}
+// }
