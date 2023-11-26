@@ -1,32 +1,41 @@
-// type ApiData = {
-//     meals: [{
-//         [key: string]: string | null
-//     }];
-// };
+// type CheckValidation = (value: string, callback: (value: string) => boolean) => boolean;
 
-// function getApiData(): Promise<ApiData> {
-//     return fetch('http://www.themealdb.com/api/json/v1/1/random.php')
-//         .then(response => response.json())
+// const input: string | null = prompt('введите пароль?');
+
+// function checkInput(value: string): boolean {
+//     if (value[0] === value[0].toUpperCase()) {
+//         return true;
+//     }
+//     return false;
 // }
 
-// getApiData()
-//     .then((data) => {
-//         console.log(data.meals[0].idMeal)
-//     })
+// const validator: CheckValidation = (input, checkInput) => {
+//     if(checkInput(input)){
+//         return true
+//     }
+//     return false
+// }
+
+// if(typeof input === 'string'){
+//     validator(input,checkInput);
+// }
+
+type DelayCall = (callback: () => void, timeout: number) => void;
+
+const timeDelay: number = Number(prompt('напиши время задержки консоля?'));
 
 
-type ApiData = {
-    meals: [{
-        [key: string]: string | null
-    }];
-};
-
-function getApiData(): Promise<ApiData> {
-    return fetch('http://api.openweathermap.org/data/2.5/weather?appid=85ed15b3e81d7e0c16510a6160d80b94&lat=0&lon=0')
-        .then(response => response.json())
+function generationNumber() {
+    setTimeout(() => {
+        console.log('таймер прошел');
+    }, timeDelay);
 }
 
-getApiData()
-    .then((data) => {
-        console.log(data)
-    })
+const userDelayTimer: DelayCall = function (timer, timeDelay) {
+    timer();
+    console.log('закончилось выполнение функции userDelayTimer c задеркой ' + timeDelay);
+}
+
+if (typeof timeDelay === 'number') {
+    userDelayTimer(generationNumber, timeDelay)
+}
